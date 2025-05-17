@@ -6,8 +6,8 @@ export default function Resultado() {
   const { respostas,aiResponse } = useForm()
   const [RespostaLocalStorange,setRespostaLocalStorange] = useState("")
   useEffect(() => {
-    const Resposta = localStorage.getItem("resposta")
-    setRespostaLocalStorange(respostas)
+    const resposta = localStorage.getItem("resposta")
+    setRespostaLocalStorange(resposta)
   },[])
   
   return (
