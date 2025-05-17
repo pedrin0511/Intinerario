@@ -5,11 +5,11 @@ import { perguntas } from "@/utils/perguntas"
 import { useEffect, useState } from "react"
 
 export default function Home() {
-   const {etapaAtual,proximaPergunta,setResposta:salvarResposta,respostas,submitForms} = useForm()
-      const perguntaAtual = perguntas[etapaAtual]
-      const [resposta,setResposta] = useState("")
-      const [buttonNext,setButtonNext] =useState(false)
-      const [showSubmit ,setshowSubmit] = useState(false)
+    const { etapaAtual, loading, proximaPergunta, setResposta: salvarResposta, respostas, submitForms } = useForm()      
+    const perguntaAtual = perguntas[etapaAtual]
+    const [resposta,setResposta] = useState("")
+    const [buttonNext,setButtonNext] =useState(false)
+    const [showSubmit ,setshowSubmit] = useState(false)
       
       useEffect(() =>{
           if(resposta.length > 2){
@@ -49,9 +49,9 @@ export default function Home() {
               )} 
               </div>
               ):(
-                  <button onClick={submitForms}>
-                     ENVIAR
-                      </button>
+                  <button onClick={submitForms} disabled={loading}>
+                    {loading ? 'Enviando...' : 'ENVIAR'}
+                </button>
               )}
             
              {/* Quando clicar em enviar fazer a requisição para o backend e ai ir para a pagina de resposta! */}
