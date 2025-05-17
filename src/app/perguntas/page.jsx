@@ -8,7 +8,7 @@ export default function Resultado() {
   useEffect(() => {
     const Resposta = localStorage.getItem("resposta")
     setRespostaLocalStorange(respostas)
-  },[aiResponse])
+  },[])
   
   return (
     <div>
