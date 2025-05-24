@@ -85,7 +85,7 @@ const submitStorange = () =>{
                 Ir para Resultado
             </Link>
             <div>
-                <textarea type="text" 
+                <textarea 
                 value={aiResponse}
                 onChange={(e) => setAiResponse(e.target.value)}
                 />
