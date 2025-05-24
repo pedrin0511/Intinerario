@@ -3,6 +3,7 @@ import "./globals.css";
 import { useForm } from "@/context/FormContext";
 import { perguntas } from "@/utils/perguntas"
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 
 export default function Home() {
     const { etapaAtual, loading, proximaPergunta, setResposta: salvarResposta, respostas, submitForms } = useForm()      
@@ -10,7 +11,17 @@ export default function Home() {
     const [resposta,setResposta] = useState("")
     const [buttonNext,setButtonNext] =useState(false)
     const [showSubmit ,setshowSubmit] = useState(false)
-      
+    const [RespostaLocalStorange,setRespostaLocalStorange] = useState("")
+    const router = useRouter()
+    useEffect(() =>{
+        const resposta = localStorage.getItem("formsubmit")
+        console.log(resposta)
+        if(resposta){
+            router.push('/perguntas')
+        }
+    },[])
+
+
       useEffect(() =>{
           if(resposta.length > 2){
           setButtonNext(true)
@@ -36,10 +47,10 @@ export default function Home() {
       }
       return(
           <div>
-              <h1>{perguntaAtual?.texto}</h1>
+              <h3>{perguntaAtual?.texto}</h3>
               {!showSubmit?(
                   <div>
-                  <input
+                  <textarea
                   type="text"
                   value={resposta}
                   onChange={(e) => setResposta(e.target.value)}
@@ -52,10 +63,7 @@ export default function Home() {
                   <button onClick={submitForms} disabled={loading}>
                     {loading ? 'Enviando...' : 'ENVIAR'}
                 </button>
-              )}
-            
-             {/* Quando clicar em enviar fazer a requisição para o backend e ai ir para a pagina de resposta! */}
-                  
+              )}    
               
           </div>
       )

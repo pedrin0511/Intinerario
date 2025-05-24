@@ -9,14 +9,14 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
   <body>
     <div className="layout">
       <header>
-        <h1>Formulario Itinerario</h1>
+        <img src="/img/head.png" alt="" />
       </header>
       <main>
         <FormProvider>
           {children}
         </FormProvider>
         <div className="image-container">
-          <img src="https://cdn-icons-gif.flaticon.com/15557/15557693.gif" alt="Ícone ilustrativo" />
+          <img src="/img/button.png" alt="Ícone ilustrativo" />
         </div>
       </main>
     </div>

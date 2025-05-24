@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
 :root {
-  --bg: #f6f8fb;
-  --text: #1c1c1e;
+  --bg: #333333;
+  --text: #B3B3B3;
   --primary: #0071e3;
-  --secondary: #e5e5ea;
-  --highlight: #00c2ff;
+  --secondary: #4D4D4D;
+  --input: #292929;
   --success: #34c759;
   --danger: #ff3b30;
   --radius: 16px;
@@ -21,7 +21,7 @@
 html, body {
   height: 100%;
   font-family: 'Inter', sans-serif;
-  
+  background-color: var(--bg);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -33,57 +33,58 @@ body {
   align-items: center;
   padding: 2rem;
   max-height: 100vh;
+  text-align: center;
 }
 
-
-/* Títulos */
-h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1.8rem;
-  color: var(--primary);
-  background: linear-gradient(to right, var(--primary), var(--highlight));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+h3{
+  color: var(--text);
 }
 
 /* Inputs */
-input {
+textarea {
   width: 100%;
   padding: 0.9rem 1.2rem;
   font-size: 1rem;
   border: 1px solid var(--secondary);
   border-radius: var(--radius);
   margin-bottom: 1.8rem;
-  background: #fff;
-  color: var(--text);
+  background: var(--input);
+  color: #FF6600;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 113, 227, 0.05);
+  max-width: 300px;
+  min-width: 300px;
+  min-height: 8em;
+  max-height: 8em;
+  margin-top: 1.5em;
 }
 
-input:focus {
+textarea:focus {
   border-color: var(--highlight);
-  box-shadow: 0 0 0 3px rgba(0, 194, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.15);
   outline: none;
 }
 
 /* Botões */
 button {
-  width: 100%;
+  width: 300px; 
   padding: 0.85rem 1.2rem;
   font-size: 1rem;
   font-weight: 600;
-  background-color: var(--primary);
-  color: #fff;
+  background-color: var(--bg);
+  color: var(--text);
   border: none;
   border-radius: var(--radius);
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 12px rgba(0, 113, 227, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  margin: 0 auto;
+  display: block; 
 }
 
+
 button:hover {
-  background-color: #005bb5;
+  background-color: var(--);
   transform: translateY(-2px);
 }
 

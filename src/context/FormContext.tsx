@@ -1,6 +1,8 @@
 "use client"
 import { createContext, useContext, useState, ReactNode } from "react";
 import { useRouter } from "next/navigation"
+import { db } from "../firebaseConfig"
+import { doc, setDoc } from "firebase/firestore";
 
 interface Respostas {
     [id:number]:string
@@ -17,6 +19,7 @@ interface FormcontextType{
     submitForms:() => void
     loading:boolean
     aiResponse:string
+    setAiResponse:(resposta:string) => void
 }
 
 const formContext = createContext<FormcontextType | undefined>(undefined)
@@ -30,6 +33,7 @@ export const FormProvider = ({children}: {children: ReactNode}) => {
     const [loading, setLoading] = useState(false)
     const [aiResponse,setAiResponse] = useState("")
     
+
 const setResposta = (id:number,resposta:string) =>{
     setRespostas(prev => {
         const updateRespostas = [...prev]
@@ -48,35 +52,65 @@ const reiniciar = () =>{
 
 const submitForms = async() =>{
     setLoading(true)
+
     const RespostasSemNome = respostas.slice(1)
     const nome = respostas[0]
-    const payload ={nome,RespostasSemNome}
-    try {
-        const response  =  await fetch('https://intinerario-back.vercel.app/IA/',{
-         method: 'POST',
-         headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({payload}),
-        })
-        const data = await response.json()
-
-        if(data){
-            console.log(data)
-            setAiResponse(data.message)
-            localStorage.setItem("resposta", data.message)
-        router.push("/perguntas")
-    }
+    const idDoc = nome.toLowerCase().replace(/\s/g, "-")
     
-    } catch (error) {
-         console.error(error);
-    }finally{
-        setLoading(false)
+    const docRef = doc(db,"respostas" ,idDoc)
+
+    if(!respostas[0]){
+        console.error("❌ Nome não fornecido!");
+        setLoading(false);
+        return;
     }
+
+    try {
+      const resposne =  await setDoc(docRef,{
+        nome:nome,
+        respostas:RespostasSemNome
+        })
+        
+        localStorage.setItem("formsubmit", "Resposta enviada!")
+        console.log("respostas salvas")
+        router.push("/perguntas")
+    } catch (error) {
+        console.log(error)
+    }finally{
+         setLoading(false)
+    }
+
+    const submitIaResponse = async() =>{
+        
+    }
+
+
+    // try {
+    //     const response  =  await fetch('https://intinerario-back.vercel.app/IA/',{
+    //      method: 'POST',
+    //      headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({payload}),
+    //     })
+    //     const data = await response.json()
+
+    //     if(data){
+    //         console.log(data)
+    //         setAiResponse(data.message)
+    //         localStorage.setItem("resposta", data.message)
+    //     router.push("/perguntas")
+    // }
+    
+    // } catch (error) {
+    //      console.error(error);
+    // }finally{
+    //     setLoading(false)
+    // }
 }
 
 return(
-    <formContext.Provider value={{etapaAtual,respostas,setResposta,proximaPergunta,reiniciar,nome,setNome,submitForms,loading,aiResponse}}>
+    <formContext.Provider value={{etapaAtual,respostas,setResposta,proximaPergunta,reiniciar,nome,setNome,submitForms,loading,aiResponse,setAiResponse}}>
         {children}
     </formContext.Provider>
 )
