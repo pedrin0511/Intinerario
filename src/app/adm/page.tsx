@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useState } from "react";
 import { db } from "../../firebaseConfig";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import Link from "next/link";
 import styles from './index.module.css'
 
@@ -80,6 +80,20 @@ const submitStorange = () =>{
     alert("Salvo!")
     setAiResponse("")
 }
+
+
+const deleteResponse = async(id:string) =>{
+
+    try {
+        await deleteDoc(doc(db,"respostas",id))
+        setRespostas(prev => prev.filter(r => r.id !== id))
+        alert("Documento excluido!")
+    } catch (error) {
+        alert('Erro ao excluir documento')
+    }
+
+}
+
     return(
         <div className={styles.container}>
             <Link href="/resultado">
@@ -110,6 +124,7 @@ const submitStorange = () =>{
                                 </li>
                             ))}
                         </ul>
+                        <button onClick={ () =>deleteResponse(resposta.id)} style={{width:"200px", backgroundColor:"black"}}>Excluir</button>
                     </div>
                 ))}
                 </>

@@ -1,6 +1,8 @@
+.container p{
+  font-size: 2rem;
+}
 .resposta {
-  width: 100%;
-  max-width: 800px; /* ou o valor que desejar */
+  width: 90%;
   margin: 0 auto;
   word-wrap: break-word; /* quebra palavras longas */
   overflow-wrap: break-word;

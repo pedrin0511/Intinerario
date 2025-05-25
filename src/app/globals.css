@@ -39,6 +39,7 @@ body {
   flex-direction: column;
   height: 100vh;
   width: 100vw;
+
 }
 
 header {
@@ -56,9 +57,21 @@ main {
   width: 100%;
 }
 
-img {
+.container_children {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  max-width: 300px;
+}
+
+.img{
+  margin-top: 0.5em;
+  width: 18em;
+  height: auto;
+}
+.assinatura {
+  width: 10em;
   height: auto;
 }
 
@@ -88,7 +101,7 @@ button {
   width: 100%;
   max-width: 300px;
   padding: 1rem;
-  font-size: 1rem;
+  font-size: 1.8rem;
   font-weight: 600;
   background-color: var(--bg);
   color: var(--text);
@@ -133,26 +146,7 @@ button:active {
   }
 }
 
-/* Tablets paisagem e telas médias */
-@media (min-width: 900px) and (max-width: 1200px) {
-  textarea,
-  button {
-    font-size: 1.3rem;
-    max-width: 600px;
-  }
 
-  img {
-    max-width: 400px;
-  }
-
-  h1 {
-    font-size: 2.2rem;
-  }
-
-  h3 {
-    font-size: 1.6rem;
-  }
-}
 
 /* Telas grandes (ex: desktops, notebooks grandes) */
 @media (min-width: 1200px) {

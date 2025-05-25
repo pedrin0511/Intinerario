@@ -12,12 +12,12 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
             <img className="img" src="/img/head.png" alt="" />
           </header>
           <main>
-            <FormProvider>
+            <div className="container_children">
+              <FormProvider>
               {children}
             </FormProvider>
-            <div className="image-container">
-              <img className="img" src="/img/button.png" alt="Ícone ilustrativo" />
             </div>
+              <img className="assinatura" src="/img/button.png" alt="Ícone ilustrativo" />
           </main>
         </div>
       </body>

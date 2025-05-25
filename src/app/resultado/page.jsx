@@ -12,14 +12,14 @@ export default function Resultado(){
     },[])
   
     return(
-        <div>
+        <div className={styles.container}>
   {!aiResponse ? (
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-      <p style={{fontSize:"1.5rem"}}>Coletando respostas </p><PulseLoader color="#B3B3B3" size={10} />
+      <p >Coletando respostas </p><PulseLoader color="#B3B3B3" size={10} />
     </div>
   ) : (
     <div className={styles.resposta}>
-        <p style={{fontSize:"1.5rem"}}>{aiResponse}</p>
+        <p >{aiResponse}</p>
     </div>
     
   )}
