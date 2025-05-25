@@ -18,7 +18,7 @@ export default function Resultado(){
       <p>Coletando respostas </p><PulseLoader color="#B3B3B3" size={10} />
     </div>
   ) : (
-    <p>{aiResponse}</p>
+    <p style={{fontSize:"1.5rem"}}>{aiResponse}</p>
   )}
 </div>
     )
