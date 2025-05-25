@@ -1,0 +1,10 @@
+.resposta {
+  width: 100%;
+  max-width: 800px; /* ou o valor que desejar */
+  margin: 0 auto;
+  word-wrap: break-word; /* quebra palavras longas */
+  overflow-wrap: break-word;
+  white-space: pre-wrap; /* mantém quebras de linha e quebra se necessário */
+  padding: 1rem;
+  box-sizing: border-box;
+}

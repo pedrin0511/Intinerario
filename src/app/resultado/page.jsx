@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { PulseLoader } from 'react-spinners';
-
+import styles from './index.module.css'
 export default function Resultado(){
     const [aiResponse,setAiResponse] = useState("")
 
@@ -15,10 +15,13 @@ export default function Resultado(){
         <div>
   {!aiResponse ? (
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-      <p>Coletando respostas </p><PulseLoader color="#B3B3B3" size={10} />
+      <p style={{fontSize:"1.5rem"}}>Coletando respostas </p><PulseLoader color="#B3B3B3" size={10} />
     </div>
   ) : (
-    <p style={{fontSize:"1.5rem"}}>{aiResponse}</p>
+    <div className={styles.resposta}>
+        <p style={{fontSize:"1.5rem"}}>{aiResponse}</p>
+    </div>
+    
   )}
 </div>
     )
