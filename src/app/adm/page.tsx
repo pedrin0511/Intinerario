@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { db } from "../../firebaseConfig";
 import { collection, getDocs } from "firebase/firestore";
 import Link from "next/link";
+import styles from './index.module.css'
 
 interface Data{
      id:string
@@ -80,7 +81,7 @@ const submitStorange = () =>{
     setAiResponse("")
 }
     return(
-        <div>
+        <div className={styles.container}>
             <Link href="/resultado">
                 Ir para Resultado
             </Link>
