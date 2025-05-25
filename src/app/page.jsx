@@ -4,7 +4,7 @@ import { useForm } from "@/context/FormContext";
 import { perguntas } from "@/utils/perguntas"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-
+import styles from "./page.module.css"
 export default function Home() {
     const { etapaAtual, loading, proximaPergunta, setResposta: salvarResposta, respostas, submitForms } = useForm()      
     const perguntaAtual = perguntas[etapaAtual]
@@ -47,7 +47,7 @@ export default function Home() {
       }
       return(
           <div>
-              <h3>{perguntaAtual?.texto}</h3>
+              <h3 className={styles.pergunta}>{perguntaAtual?.texto}</h3>
               {!showSubmit?(
                   <div>
                   <textarea

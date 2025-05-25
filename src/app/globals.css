@@ -21,7 +21,7 @@ html, body {
   width: 100%;
   font-family: 'Inter', sans-serif;
   background-color: var(--bg);
-  color: var(--text);
+  color: #dfdfdf;
   margin: 0;
   padding: 0;
   overflow: auto;
@@ -79,7 +79,7 @@ main {
 textarea {
   width: 100%;
   padding: 1rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
   border: 1px solid var(--secondary);
   border-radius: var(--radius);
   background: var(--input);
