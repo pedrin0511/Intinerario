@@ -66,13 +66,14 @@ main {
 }
 
 .img{
-  margin-top: 0.5em;
+  margin-top: 2em;
   width: 18em;
   height: auto;
 }
 .assinatura {
   width: 10em;
   height: auto;
+  margin-bottom: 2em;
 }
 
 /* Inputs */
@@ -133,8 +134,12 @@ button:active {
     max-width: 500px;
   }
 
-  img {
+  .img {
+    margin-top: 4em;
     max-width: 350px;
+  }
+  .assinatura{
+    margin-bottom: 3em;
   }
 
   h1 {
